@@ -1,0 +1,193 @@
+
+.cabecalho__menu__hamburger {
+    /* criando o icone do menu-hamburger*/
+    width: 24px;
+    height: 24px;
+    background-image: url(../img/Menu.svg);
+    display: inline-block;
+     /* ------------------------*/
+     /* utilizado após o padding de 1em no .container*/
+     background-repeat:no-repeat;
+     background-position: center;
+     /* ------------------------*/
+}
+
+/* esse procedimento foi utilizado no final do projeto, onde os combinadores alteram a cor do botão do icone hamburger*/
+.container__botao:checked ~.container__rotulo > .cabecalho__menu__hamburger{
+    background-image: url("../img/Menu\ Aberto.svg");
+}
+.container__botao:checked ~ .container__rotulo{
+    background: var(--cor-gradiente);
+}
+
+/* ------------------------------------------------------------------------*/
+.cabecalho {
+    /* configurando o cabeçalho e ajustando a posição dos elementos*/
+    background-color: var(--cor-branco);
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+     /* ------------------------*/
+     /* posicionando a lista sobre o icone menu-hamburger. O positio relative libera o conteudo para que vc possa inserir outros atributos como, top-botton-rigth-lefth*/
+     position: relative;
+     /* ------------------------*/
+
+}
+.container {
+    /* aplicando a mesma coniguração para todos os itens, pois o menu_hamburger estava fora do ajuste de posição anterior*/
+    display: flex;
+    align-items: center;
+     /* ------------------------*/
+}
+.container__imagem {
+   /* ajustando o espaçamento dos elementos*/
+    padding: 1em;
+       /* ------------------------*/
+}
+.lista-menu {
+    /* oculta o elemento*/
+    display: none;
+    /* ------------------------*/
+    /* (após inserir position relative no ".cabecalho") posicionando a lista sobre o icone menu-hamburger. O position absolut permite que vc movimente o elemento de acordo com a posição do elemento pai*/
+    position:absolute;
+    top:100%;
+    /* ------------------------*/
+    /* ajuste no tamanho da caixa da lista (vw ajusta de acordo com o tamanho tela*/
+    width: 70vw;
+    background-color: var(--cor-branco);
+    /* ------------------------*/
+}
+.container__botao:checked~.lista-menu{
+     /* modo de fazer uma condicinal no css, ela vai fazer com que o item apareça caso o checkbox esteja marcado. O "~" exerce a função de acionar a proxima classe caso a caixa esteja marcada*/
+    display: block;
+    /* ------------------------*/
+}
+.lista-menu__titulo,.lista-menu__item {
+   /* ajustando o espaçamento dos elementos da lista e alterando a cor do background*/  
+    padding: 1em;
+    background-color: var(--cor-branco);
+     /* ------------------------*/
+}
+.lista-menu__titulo{
+    color: var(--cor-laranja);
+    font-weight:700;
+
+}
+.lista-menu__item{
+    /* aplicar a cor degrade na fonte (copiado do figma) */ 
+    background: var(--cor-gradiente);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* ------------------------*/
+    /* trasformar todas as letras em maiúsculas*/
+    text-transform: uppercase;
+    /* ------------------------*/
+    list-style-type: none;
+}
+.container__botao {
+    /*remover a caixa do checkbox*/
+    display: none;
+    /* ------------------------*/
+}
+/*remover esse titulo para mobile - isso foi feito após a @media screen 1024*/
+.container__titulo, .opcoes, .container__texto{
+    display: none;
+}
+
+
+ /* ------------------------*/
+
+
+@media screen and (min-width: 1024px) {
+.container__titulo,.container__negrito{
+    font-family: var(--fonte-secundaria);
+    font-size: 30px;
+}
+
+.container__titulo,.opcoes {
+/*insere titulo 1024*/
+    display: block;
+/* ------------------------*/
+
+    font-weight: 400;
+}
+.container__negrito{
+    font-weight: 700;
+}
+
+.opcoes {
+    display: flex;
+    list-style-type: none;
+    padding: 1em ;
+
+}
+.opcoes__lista {
+    text-transform: uppercase;
+    padding: 1em;
+   
+}
+.opcoes__link {
+    text-decoration: none;
+    color: var(--cor-preto);
+}
+.container__imagem__oculta, .cabecalho__menu__hamburger{
+    display: none;
+}
+.cabecalho {
+    padding: 1em 2.5em;
+}
+.container__imagem{
+    padding: 1em 1em;
+}
+/*insere a lista dentro do menu hamburger*/
+.opcoes-botao:checked~.lista-menu{
+    display:block ;
+    width: auto;
+    /* ------------------------*/
+}
+.opcoes-botao {
+    display: none;
+}
+/* esse procedimento foi utilizado no final do projeto, onde os combinadores alteram a cor do botão do icone hamburger*/
+.opcoes-botao:checked~.opcoes__rotulo>.opcoes__lista{
+    background: var(--cor-gradiente);
+    color: var(--cor-branco);
+}
+
+ /* -------------------------------------------------*/
+ .lista-menu__item:hover{
+    background: var(--cor-gradiente);
+
+ }
+ .lista-menu__item:hover > .lista-menu__link{
+    -webkit-text-fill-color: var(--cor-branco);
+    text-decoration: none;
+ }
+
+   
+   
+}
+
+
+@media screen and (min-width:1728px) {
+    .cabecalho{
+        padding: 0 5em;
+    }
+    
+    .container__link{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--cor-preto);
+        font-size: 20px;
+        padding-right: 2em;
+    }
+    .opcoes{
+        margin-right: auto;
+    }
+    .container__texto{
+        display: block;
+    }
+    
+}
